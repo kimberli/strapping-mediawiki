@@ -29,6 +29,7 @@ $wgResourceModules['skins.strapping'] = array(
                 'strapping/theme.css' => array( 'media' => 'screen' ),
 	),
 	'scripts' => array(
+		'strapping/custom.js',
 		'strapping/bootstrap/js/bootstrap.js',
 		'strapping/strapping.js',
 	),

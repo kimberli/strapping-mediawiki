@@ -33,6 +33,5 @@ jQuery(function($) {
       // Convert <esc> into a blur
       if (ev.keyCode === 27) { this.blur(); }
     }
-  });
+  });  
 });
-

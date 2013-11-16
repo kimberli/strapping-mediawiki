@@ -1,1 +1,420 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto);
+
 /* Add your custom theme overrides here */
+/* ------ TABLE OF CONTENTS ----------- */
+/* 1. TYPOGRAPHY
+/* 2. PAGE LAYOUT
+/* 3. TABLES
+/* 4. FORMS
+/* 5. COLUMN SETUP
+/* 6. MAIN PAGE LAYOUT
+/* 7. MEDIA QUERIES
+/* ------------------------------------ */
+
+
+/* ------------- 1. TYPOGRAPHY -------------- */
+.page-header {
+	color: #424242;
+	color: #222;
+	border-bottom: 0px;
+}
+h2{
+	padding-top: 0.5em;
+	color: #626262;
+	width: 100%;
+	border-bottom: 1px solid #EEEEEE;
+}
+h3 {
+	color: #CC4400;
+}
+h4 {
+	color: #E06F53;
+	padding-left: 1em;
+}
+
+/* ------------- 2. PAGE LAYOUT -------------- */
+.editsection,
+.catlinks,
+.print,
+td>h3 {
+	display: none;
+}
+
+.header-holder,
+.menu-holder,
+.nav,
+.footer {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: -moz-none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.navbar {
+	width: 100%;
+	z-index: 999;
+}
+
+#mw-searchButton {
+	display:none;
+}
+
+.header-holder{
+	width: 100%;
+	background-image: URL("../common/texture.png");
+}
+
+.header {
+	padding-top: 1em;
+	padding-bottom: 1em;
+}
+
+.logo-container  img{
+	padding-left: 1em;
+	display: block;
+	float: left;
+}
+
+.menu-holder {
+	width: 100%;
+	height: 34px;
+	background: rgb(245,245,245); /* Old browsers */
+	background: -moz-linear-gradient(top,  rgba(245,245,245,1) 0%, rgba(230,230,230,1) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(245,245,245,1)), color-stop(100%,rgba(230,230,230,1))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  rgba(245,245,245,1) 0%,rgba(230,230,230,1) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  rgba(245,245,245,1) 0%,rgba(230,230,230,1) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  rgba(245,245,245,1) 0%,rgba(230,230,230,1) 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  rgba(245,245,245,1) 0%,rgba(230,230,230,1) 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f5f5f5', endColorstr='#e6e6e6',GradientType=0 ); /* IE6-9 */
+}
+
+.menu-holder a{
+	color: #404040;
+	font-family: Roboto, sans-serif;
+}
+
+.navigation li a:hover {
+	background-color: #E1E1E1;
+}
+
+#innerbodycontent{
+	word-wrap: break-word;
+	font-family: Roboto, sans-serif;
+}
+
+code {
+ white-space: pre-wrap;       /* css-3 */
+ white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+ white-space: -pre-wrap;      /* Opera 4-6 */
+ white-space: -o-pre-wrap;    /* Opera 7 */
+ word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+
+.gallerycontainer ,
+.biopiccontainer{
+	display: inline-block;
+	width: 320px;
+	vertical-align: top;
+}
+.biopiccontainer {
+	float: left;
+}
+.other-image {
+	width: 100%;
+}
+.image {
+	width: 320px;
+}
+
+.video {
+	width: 300px;
+	height: 260px;
+	border: 0;
+}
+.prev-page,
+.next-page {
+	width: 47%;
+	display: inline-block;
+}
+.next-page {
+	text-align: right;
+}
+
+.footer {
+	margin-top: 5em;
+	border-top: 1px dashed #CC4400;
+}
+/* ------------- 3. TABLES -------------- */
+.sidebar {
+	float: right;
+	width: 45%;
+	position: relative;
+	top: -1em;
+	left: 1em;
+}
+
+.widetable-holder {
+	overflow-x: auto;
+	max-width: 100%;
+}
+
+.toc {
+	margin-top: 20px;
+	border: 1px solid #CCCCCC;
+	background-color: #F8F8F8;
+	max-width: 100%;
+}
+
+.toc h2 {
+	color: #424242;
+	font-size: 150%;
+	padding-top: 0;
+	border-bottom: 0;
+}
+
+.toc td {
+	padding-left: 1em;
+	padding-right: 1em;
+	padding-bottom: 0.5em;
+}
+
+.toc ul {
+	list-style-type: none;
+}
+
+/* -------------- 4. FORMS -------------- */
+
+.mandatoryField {
+	font-weight: normal;
+}
+
+.button,
+input[type=submit],
+input[type=button]:not(.sf-save_and_continue) {
+	border:1px solid #BABABA; 
+	-webkit-border-radius: 3px; 
+	   -moz-border-radius: 3px;
+	        border-radius: 3px;
+	padding: 10px 10px 10px 10px; 
+	text-decoration:none; 
+	display:inline-block;
+	background: rgb(245,245,245); /* Old browsers */
+	background: -moz-linear-gradient(top,  rgba(245,245,245,1) 0%, rgba(230,230,230,1) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(245,245,245,1)), color-stop(100%,rgba(230,230,230,1))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  rgba(245,245,245,1) 0%,rgba(230,230,230,1) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  rgba(245,245,245,1) 0%,rgba(230,230,230,1) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  rgba(245,245,245,1) 0%,rgba(230,230,230,1) 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  rgba(245,245,245,1) 0%,rgba(230,230,230,1) 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f5f5f5', endColorstr='#e6e6e6',GradientType=0 ); /* IE6-9 */
+	color: #404040;
+	font-size: 106.125%;
+	font-weight: normal;
+	font-family: Roboto, sans-serif;
+	padding: 0.125em 0.5em;
+	margin-right: 0.5em;
+}
+.button:hover,
+input[type=submit]:hover,
+input[type=button]:not(.sf-save_and_continue):hover {
+	border:1px solid #BABABA;
+	background-color: rgba(220,220,220,1); 
+	background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(220,220,220,1)), to(rgba(230,230,230,1)));
+	background-image: -webkit-linear-gradient(top, rgba(220,220,220,1), rgba(230,230,230,1));
+	background-image: -moz-linear-gradient(top, rgba(220,220,220,1), rgba(230,230,230,1));
+	background-image: -ms-linear-gradient(top, rgba(220,220,220,1), rgba(230,230,230,1));
+	background-image: -o-linear-gradient(top, rgba(220,220,220,1), rgba(230,230,230,1));
+	background-image: linear-gradient(to bottom, rgba(220,220,220,1), rgba(230,230,230,1));
+	filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=rgba(220,220,220,1), endColorstr=rgba(230,230,230,1));
+	cursor: pointer; 
+}
+.button:active,
+input[type=submit]:active,
+input[type=button]:not(.sf-save_and_continue):active {
+	border: 1px solid #BABABA;
+	-webkit-box-shadow: inset 0 0 4px 2px rgba(200,200,200,1), 0 0 1px 0 #eeeeee;
+	box-shadow: inset 0 0 4px 2px rgba(200,200,200,1), 0 0 1px 0 #eeeeee; 
+}
+
+select,
+textarea{
+	width: auto;
+}
+
+input[type=text],
+input[type=number] {
+	width: auto;
+	font-family: 'Nunito', sans-serif;
+	padding-left: 5px;
+	border: 1px solid #CCCCCC;
+	border-radius: 6px;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+}
+
+input[type=text]:hover,
+input[type=text]:focus,
+input[type=number]:hover,
+input[type=number]:focus {
+	outline: none;
+	-moz-box-shadow: 0 0 6px #98C1DB;
+	-webkit-box-shadow: 0 0 6px #98C1DB;
+	box-shadow: 0 0 6px #98C1DB;
+	border-color: #98C1DB;
+}
+
+#footer-searchInput {
+	height: 16px;
+	margin-left: 5px;
+}
+
+/* -------------- 5. COLUMN SETUP -------------- */
+
+	.col {
+		display: block;
+		float: left;
+	}
+
+	.section:before,
+	.section:after {
+		content:"";
+		display:table;
+	}
+	.section:after {
+		clear:both;
+	}
+	.one-whole {
+		width: 100%;
+	}
+	.one-half {
+		width: 50%;
+	}
+
+/* ------------------- 6. MAIN PAGE LAYOUT ------------------ */
+.tiles {
+	border-top: 1px solid #CCCCCC;
+	border-bottom: 1px solid #CCCCCC;
+	background-color: #FAFAFA;
+	background-image: URL("../common/mainpagetexture.png");
+}
+.tiles h3 {
+	color: #626262;
+}
+.entries, 
+.images, 
+.videos {
+	margin: 1%;
+	padding-left: 1%;
+	padding-right: 1%;
+	padding-bottom: 1%;
+}
+.entries{
+	width: 21%;
+}
+.images{
+	width: 35%;
+}
+.videos {
+	width: 31%;
+}
+/* hide all but most recent images of most recent image entry*/ 
+.recent-image:not(:last-child ){
+	display:none;
+}
+
+.recent-image:last-child,
+.recent-video:last-child {
+	border: 1px solid #CCCCCC;
+}
+
+/* hide all but most recent videos of most recent video entry*/ 
+.recent-video:not(:last-child){
+	display:none;
+}
+
+.recent-video {
+	width: 100%;
+	height: 120%;
+	border: 0;
+}
+.divider {
+	background-image: URL("../common/divider.png");
+	height: 60px;
+	width: 150px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* ------------------- 7. MEDIA QUERIES ------------------ */
+@media (max-width: 1248px) {
+	.page-title {
+			width: 500px;
+		}
+}
+@media (max-width: 1024px) {
+	.logo-container h1 {
+		font-size: 300%;
+	}
+	.col {
+		width: 96%;
+	}
+}
+
+@media (max-width: 768px) {
+	.page-title {
+		width: 96%;
+	}
+	#searchInput {
+		width: 125px;
+	}
+	.header-holder,
+	.menu-holder{
+		width: auto;
+		margin-left: -20px;
+		margin-right: -20px;
+	}
+	.sidebar {
+		width: 100%;
+	}
+	.page-header {
+		font-size: 225%;
+	}
+	h2 {
+		font-size: 175%;
+	}
+	h3 {
+		font-size: 150%;
+	}
+	h4 {
+		font-size: 125%;
+	}
+	.biopiccontainer {
+		width: 100%;
+	}
+	.divider {
+		background-image: URL("../common/divider2.png");
+		width: 75px;
+		height: 30px;
+	}
+}
+
+@media (max-width: 480px) {
+	.logo-container h1 {
+		font-size: 250%;
+		width: 300px;
+	}
+}
+
+@media (max-width: 380px) {
+	#p-actions {
+		display: none;
+	}
+	.nav {
+		font-size: 87.5%;
+	}
+	.page-header {
+		font-size: 175%;
+	}
+	
+}

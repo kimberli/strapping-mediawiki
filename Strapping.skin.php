@@ -95,9 +95,9 @@ class StrappingTemplate extends BaseTemplate {
     global $wgStrappingSkinUseStandardLayout;
 
     if (!$wgSearchPlacement) {
-      $wgSearchPlacement['header'] = true;
+      $wgSearchPlacement['header'] = false;
       $wgSearchPlacement['nav'] = false;
-      $wgSearchPlacement['footer'] = false;
+      $wgSearchPlacement['footer'] = true;
     }
 
     // Build additional attributes for navigation urls
@@ -128,13 +128,7 @@ class StrappingTemplate extends BaseTemplate {
             ' class="' . htmlspecialchars( $link['class'] ) . '"';
           unset( $nav[$section][$key]['class'] );
         }
-        if ( isset( $link['tooltiponly'] ) && $link['tooltiponly'] ) {
-          $nav[$section][$key]['key'] =
-            Linker::tooltip( $xmlID );
-        } else {
-          $nav[$section][$key]['key'] =
-            Xml::expandAttributes( Linker::tooltipAndAccesskeyAttribs( $xmlID ) );
-        }
+
       }
     }
     $this->data['namespace_urls'] = $nav['namespaces'];
@@ -149,7 +143,7 @@ class StrappingTemplate extends BaseTemplate {
 <?php if ( $wgGroupPermissions['*']['edit'] || $wgStrappingSkinAnonNavbar || $this->data['loggedin'] ) { ?>
 <div id="userbar" class="navbar navbar-static">
   <div class="navbar-inner">
-    <div style="width: auto;" class="container">
+    <div style="width: 100%;" class="container">
 
       <div class="pull-left">
         <?php
@@ -160,9 +154,9 @@ class StrappingTemplate extends BaseTemplate {
           $this->renderNavigation( array( 'PAGE' ) );
 
           # This content in other languages
-          if ( $this->data['language_urls'] ) {
-            $this->renderNavigation( array( 'LANGUAGES' ) );
-          }
+     //     if ( $this->data['language_urls'] ) {
+     //       $this->renderNavigation( array( 'LANGUAGES' ) );
+     //     }
 
           # Edit button
           $this->renderNavigation( array( 'EDIT' ) ); 
@@ -173,9 +167,9 @@ class StrappingTemplate extends BaseTemplate {
           # Sidebar items to display in navbar
           $this->renderNavigation( array( 'SIDEBARNAV' ) );
 
-          if ( !isset( $portals['TOOLBOX'] ) ) {
-            $this->renderNavigation( array( 'TOOLBOX' ) ); 
-          }
+     //     if ( !isset( $portals['TOOLBOX'] ) ) {
+     //       $this->renderNavigation( array( 'TOOLBOX' ) ); 
+     //     }
         ?>
       </div>
 
@@ -199,14 +193,20 @@ class StrappingTemplate extends BaseTemplate {
     <div id="mw-head-base" class="noprint"></div>
 
     <!-- Header -->
-    <div id="page-header" class="container <?php echo $this->data['loggedin'] ? 'signed-in' : 'signed-out'; ?>">
-      <section class="span12">
+	<div class="header-holder">
+    <div id="page-header" class="header container <?php echo $this->data['loggedin'] ? 'signed-in' : 'signed-out'; ?>">
+	  <section class="span12">
 
       <?php
       if ( $wgStrappingSkinLogoLocation == 'bodycontent' ) {
         $this->renderLogo();
       } ?>
-
+	  
+	  </section>
+	  </div></div>
+	  <div class="menu-holder">
+	  <div id="page-header" class="container <?php echo $this->data['loggedin'] ? 'signed-in' : 'signed-out'; ?>">
+	  <section class="span12">
       <ul class="navigation nav nav-pills pull-right searchform-disabled">
 
       <?php
@@ -221,7 +221,7 @@ class StrappingTemplate extends BaseTemplate {
       </ul>
 
     </section>
-    </div>
+    </div></div>
 
     <?php if ($this->data['loggedin']) {
       $userStateClass = "user-loggedin";
@@ -263,7 +263,7 @@ class StrappingTemplate extends BaseTemplate {
 
         <!-- innerbodycontent -->
         <?php # Peek into the body content of articles, to see if a custom layout is used
-        if ($wgStrappingSkinUseStandardLayout || preg_match("/class.*row/i", $this->data['bodycontent']) && $this->data['articleid']) {
+        if ($wgStrappingSkinUseStandardLayout || preg_match("/custom-layout/i", $this->data['bodycontent']) && $this->data['articleid']) {
           # If there's a custom layout, the H1 and layout is up to the page ?>
           <div id="innerbodycontent" class="layout">
             <h1 id="firstHeading" class="firstHeading page-header">
@@ -347,9 +347,12 @@ class StrappingTemplate extends BaseTemplate {
           if ($category === 'info') { continue; } ?>
 
             <ul id="footer-<?php echo $category ?>">
-              <?php foreach( $links as $link ): ?>
+			<?php /* the following are fake footer links Kim added in */ ?>
+			<li id="footer-places-meetings"><a href="/nb/Meeting_List" title="Meeting List">Meeting List</a></li> 
+			<li id="footer-places-about"><a href="/nb/5327A:About" title="5327A:About">About 5327A</a></li> 
+              <?php /*foreach( $links as $link ): ?>
                 <li id="footer-<?php echo $category ?>-<?php echo $link ?>"><?php $this->html( $link ) ?></li>
-              <?php endforeach; ?>
+              <?php endforeach; */?>
               <?php
                 if ($category === 'places') {
 
@@ -379,19 +382,7 @@ class StrappingTemplate extends BaseTemplate {
               endforeach; 
             }
           ?>
-          <?php $footericons = $this->getFooterIcons("icononly");
-          if ( count( $footericons ) > 0 ): ?>
-            <ul id="footer-icons" class="noprint">
-    <?php      foreach ( $footericons as $blockName => $footerIcons ): ?>
-              <li id="footer-<?php echo htmlspecialchars( $blockName ); ?>ico">
-    <?php        foreach ( $footerIcons as $icon ): ?>
-                <?php echo $this->getSkin()->makeFooterIcon( $icon ); ?>
 
-    <?php        endforeach; ?>
-              </li>
-    <?php      endforeach; ?>
-            </ul>
-          <?php endif; ?>
         </div>
       </div>
       <!-- /footer -->
@@ -410,9 +401,8 @@ class StrappingTemplate extends BaseTemplate {
    */
   private function renderLogo() {
         $mainPageLink = $this->data['nav_urls']['mainpage']['href'];
-        $toolTip = Xml::expandAttributes( Linker::tooltipAndAccesskeyAttribs( 'p-logo' ) );
 ?>
-                  <ul class="nav logo-container" role="navigation"><li id="p-logo"><a href="<?php echo htmlspecialchars( $this->data['nav_urls']['mainpage']['href'] ) ?>" <?php echo Xml::expandAttributes( Linker::tooltipAndAccesskeyAttribs( 'p-logo' ) ) ?>><img src="<?php $this->text( 'logopath' ); ?>" alt="<?php $this->html('sitename'); ?>"></a><li></ul>
+                  <ul class="nav logo-container" role="navigation"><li id="p-logo"><img src="<?php $this->text( 'logopath' ); ?>"><a href="<?php echo htmlspecialchars( $this->data['nav_urls']['mainpage']['href'] ) ?>" ><img src="/skins/common/5327A.png" class="page-title" onmouseover="this.src='/skins/common/5327Ahover.png'" onmouseout="this.src='/skins/common/5327A.png'"  ontouchstart="this.src='/skins/common/5327Ahover.png'"></a><li></ul>
 <?php
   }
 
@@ -442,14 +432,22 @@ class StrappingTemplate extends BaseTemplate {
       switch ( $element ) {
 
         case 'EDIT':
+		  $theData = array_merge($this->data['namespace_urls'], $this->data['view_urls']);
           if ( !array_key_exists('edit', $this->data['content_actions']) ) {
             break;
           }
           $navTemp = $this->data['content_actions']['edit'];
-
+		  $form=false;
           if ($navTemp) { ?>
             <div class="actions pull-left nav">
-                <a id="b-edit" href="<?php echo $navTemp['href']; ?>" class="btn"><i class="icon-edit"></i> <?php echo $navTemp['text']; ?></a>
+                <a id="b-edit" href="<?php foreach ( $theData as $link ) {
+					if ( $link['text'] == 'Edit with form' ) {
+						echo $link['href'];
+						$form=true;
+					}
+				}
+				if ($form == false) {
+					echo $navTemp['href']; }?>" class="btn"><i class="icon-edit"></i> <?php echo $navTemp['text']; ?></a>
             </div>
           <?php } 
         break;
@@ -458,7 +456,7 @@ class StrappingTemplate extends BaseTemplate {
         case 'PAGE':
           $theMsg = 'namespaces';
           $theData = array_merge($this->data['namespace_urls'], $this->data['view_urls']);
-          ?>
+/*          ?>
           <ul class="nav" role="navigation">
             <li class="dropdown" id="p-<?php echo $theMsg; ?>" class="vectorMenu<?php if ( count($theData) == 0 ) echo ' emptyPortlet'; ?>">
               <?php
@@ -473,12 +471,15 @@ class StrappingTemplate extends BaseTemplate {
                 <?php 
                 foreach ( $theData as $link ) {
                   # Skip a few redundant links
-                  if (preg_match('/^ca-(view|edit)$/', $link['id'])) { continue; }
+                  if (preg_match('/^ca-(view|edit|formedit)$/', $link['id'])) { continue; }
 
                   ?><li<?php echo $link['attributes'] ?>><a href="<?php echo htmlspecialchars( $link['href'] ) ?>" <?php echo $link['key'] ?> tabindex="-1"><?php echo htmlspecialchars( $link['text'] ) ?></a></li><?php
                 }
 
           ?></ul></li></ul><?php
+*/		
+
+
 
         break;
 
@@ -557,8 +558,7 @@ class StrappingTemplate extends BaseTemplate {
         case 'ACTIONS':
 
           $theMsg = 'actions';
-          $theData = array_reverse($this->data['action_urls']);
-          
+          $theData = array_merge($this->data['view_urls'],array_reverse($this->data['action_urls']));
           if (count($theData) > 0) {
             ?><ul class="nav" role="navigation">
               <li class="dropdown" id="p-<?php echo $theMsg; ?>" class="vectorMenu<?php if ( count($theData) == 0 ) echo ' emptyPortlet'; ?>">
@@ -566,9 +566,10 @@ class StrappingTemplate extends BaseTemplate {
                 <ul aria-labelledby="<?php echo $this->msg($theMsg); ?>" role="menu" class="dropdown-menu" <?php $this->html( 'userlangattributes' ) ?>>
                   <?php foreach ( $theData as $link ):
 
-                    if (preg_match('/MovePage/', $link['href'])) {
+                    if (preg_match('/^ca-(delete)$/', $link['id'])) {
                       echo '<li class="divider"></li>';
                     }
+					if (preg_match('/^ca-(protect|watch|view|edit|form_edit)$/', $link['id'])) { continue; }
 
                     ?>
 
@@ -624,7 +625,7 @@ class StrappingTemplate extends BaseTemplate {
 
                 if (preg_match('/preferences|logout/', $key)) {
                   echo '<li class="divider"></li>';
-                } else if ( preg_match('/(notifications|login|createaccount)/', $key) ) {
+                } else if ( preg_match('/(notifications|login|createaccount|talk|watchlist)/', $key) ) {
                   continue;
                 }
 
@@ -665,10 +666,10 @@ class StrappingTemplate extends BaseTemplate {
 
         case 'SEARCHFOOTER':
           ?>
-            <form class="" action="<?php $this->text( 'wgScript' ) ?>" id="footer-search">
+            <p><form class="" action="<?php $this->text( 'wgScript' ) ?>" id="footer-search">
               <i class="icon-search"></i><b class="border"></b><input id="footer-searchInput" class="search-query" type="search" accesskey="f" title="<?php $this->text('searchtitle'); ?>" placeholder="<?php $this->msg('search'); ?>" name="search" value="<?php echo htmlspecialchars ($this->data['search']); ?>">
               <?php echo $this->makeSearchButton( 'fulltext', array( 'id' => 'mw-searchButton', 'class' => 'searchButton btn hidden' ) ); ?>
-            </form>
+            </form></p>
 
           <?php
         break;
