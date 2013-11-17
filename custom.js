@@ -20,7 +20,7 @@ window.onscroll = function() {
     var box = document.getElementById('userbar'),
         scroll = getScrollTop();
 
-    if (scroll >= 1) {
+    if (scroll > 0) {
 		box.style.position = "fixed";
     }
 	else {
