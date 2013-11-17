@@ -130,7 +130,7 @@ code {
 
 .video {
 	width: 300px;
-	height: 260px;
+	min-height: 260px;
 	border: 0;
 }
 .prev-page,
@@ -396,6 +396,19 @@ input[type=number]:focus {
 		background-image: URL("../common/divider2.png");
 		width: 75px;
 		height: 30px;
+	}
+}
+
+
+@media (max-width: 767px) {
+	body {
+		width: 100%;
+		padding: 0;
+		overflow: hidden;
+	}
+	body > *:not(#userbar) {
+		padding-left: 20px;
+		padding-right: 20px;
 	}
 }
 

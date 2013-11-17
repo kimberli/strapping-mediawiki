@@ -122,17 +122,6 @@ a:not([name]) {
   }
 }
 
-@media (max-width: 767px) {
-	body {
-		width: 100%;
-		padding: 0;
-	}
-	body > *:not(#userbar) {
-		padding-left: 20px;
-		padding-right: 20px;
-	}
-}
-
 .layout .firstHeading {
   display: none;
 }
