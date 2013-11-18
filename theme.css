@@ -71,10 +71,11 @@ td>h3 {
 	padding-bottom: 1em;
 }
 
-.logo-container  img{
+.gael-logo,
+.page-title {
 	padding-left: 1em;
-	display: block;
-	float: left;
+	display: inline-block;
+	vertical-align: bottom !important;
 }
 
 .menu-holder {
@@ -111,7 +112,6 @@ code {
  white-space: -o-pre-wrap;    /* Opera 7 */
  word-wrap: break-word;       /* Internet Explorer 5.5+ */
 }
-
 .gallerycontainer ,
 .biopiccontainer{
 	display: inline-block;
@@ -127,10 +127,19 @@ code {
 .image {
 	width: 320px;
 }
-
+.videocontainer {
+	position: relative;
+	padding-bottom: 75%; /* 4:3 */
+	height: 0;
+}
+.mp-videocontainer {
+	position: relative;
+	padding-bottom: 75%; /* 4:3*/
+	height: 0;
+}
 .video {
 	width: 300px;
-	min-height: 260px;
+	height: 100% !important;
 	border: 0;
 }
 .prev-page,
@@ -329,13 +338,14 @@ input[type=number]:focus {
 }
 
 /* hide all but most recent videos of most recent video entry*/ 
+.mp-videocontainer:not(:last-child),
 .recent-video:not(:last-child){
 	display:none;
 }
 
 .recent-video {
 	width: 100%;
-	height: 120%;
+	height: 100%;
 	border: 0;
 }
 .divider {
@@ -356,14 +366,42 @@ input[type=number]:focus {
 	.logo-container h1 {
 		font-size: 300%;
 	}
+}
+
+@media (max-width: 979px) {
+	.gael-logo {
+		margin-left: -25px;
+	}
+	.page-title {
+		margin-right: -25px;
+		width: 430px;
+	}
+	.gallerycontainer {
+		width: 100%;
+		max-width: 500px;
+	}
+	.galleryitem {
+		width: 100%;
+	}
+	.image {
+		width: 100%;
+	}
+	.video {
+		width: 100%;
+	}
 	.col {
 		width: 96%;
 	}
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
+	.gael-logo {
+		margin-left: 0;
+		width: 208px;
+	}
 	.page-title {
-		width: 96%;
+		width: 400px;
+		margin-right: 0;
 	}
 	#searchInput {
 		width: 125px;
@@ -397,10 +435,6 @@ input[type=number]:focus {
 		width: 75px;
 		height: 30px;
 	}
-}
-
-
-@media (max-width: 767px) {
 	body {
 		width: 100%;
 		padding: 0;
@@ -412,12 +446,20 @@ input[type=number]:focus {
 	}
 }
 
-@media (max-width: 480px) {
-	.logo-container h1 {
-		font-size: 250%;
-		width: 300px;
+@media (max-width: 650px) {
+	.page-title {
+		width: 350px;
 	}
 }
+
+@media (max-width: 600px) {
+	.gael-logo {
+		width: 300px;
+	}
+	.page-title {
+		width: 400px;
+		margin-right: 0;
+	}
 
 @media (max-width: 380px) {
 	#p-actions {
@@ -426,8 +468,15 @@ input[type=number]:focus {
 	.nav {
 		font-size: 87.5%;
 	}
-	.page-header {
-		font-size: 175%;
+	.gael-logo {
+		width: 96%;
+		max-width: 300px;
 	}
-	
+	.page-title{
+		width: 96%;
+	}
+	.prev-page,
+	.next-page {
+		font-size: 87.5%;
+	}
 }

@@ -402,7 +402,7 @@ class StrappingTemplate extends BaseTemplate {
   private function renderLogo() {
         $mainPageLink = $this->data['nav_urls']['mainpage']['href'];
 ?>
-                  <ul class="nav logo-container" role="navigation"><li id="p-logo"><img src="<?php $this->text( 'logopath' ); ?>"><a href="<?php echo htmlspecialchars( $this->data['nav_urls']['mainpage']['href'] ) ?>" ><img src="/skins/common/5327A.png" class="page-title" onmouseover="this.src='/skins/common/5327Ahover.png'" onmouseout="this.src='/skins/common/5327A.png'"  ontouchstart="this.src='/skins/common/5327Ahover.png'"></a><li></ul>
+                  <ul class="nav logo-container" role="navigation"><img src="<?php $this->text( 'logopath' ); ?>" class="gael-logo"><a href="<?php echo htmlspecialchars( $this->data['nav_urls']['mainpage']['href'] ) ?>" ><img src="/skins/common/5327A.png" class="page-title" onmouseover="this.src='/skins/common/5327Ahover.png'" onmouseout="this.src='/skins/common/5327A.png'"  ontouchstart="this.src='/skins/common/5327Ahover.png'"></a></ul>
 <?php
   }
 
