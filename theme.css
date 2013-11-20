@@ -68,7 +68,6 @@ td>h3 {
 
 .header {
 	padding-top: 1em;
-	padding-bottom: 1em;
 }
 
 .gael-logo,
@@ -281,8 +280,9 @@ input[type=number]:focus {
 /* -------------- 5. COLUMN SETUP -------------- */
 
 	.col {
-		display: block;
+		display: inline-block;
 		float: left;
+		
 	}
 
 	.section:before,
@@ -376,12 +376,13 @@ input[type=number]:focus {
 		margin-right: -25px;
 		width: 430px;
 	}
-	.gallerycontainer {
+	.gallerycontainer,
+	.biopiccontainer {
 		width: 100%;
-		max-width: 500px;
 	}
 	.galleryitem {
 		width: 100%;
+		max-width: 500px;
 	}
 	.image {
 		width: 100%;
@@ -389,7 +390,7 @@ input[type=number]:focus {
 	.video {
 		width: 100%;
 	}
-	.col {
+	.one-whole {
 		width: 96%;
 	}
 }
